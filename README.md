@@ -27,17 +27,15 @@ This is a Python desktop application that converts text between English, Braille
 
 1. Clone this repository.
 2. Install required Python packages:
-   ```
+
    pip install pyttsx3 simpleaudio numpy
-   ```
+   
 3. On Windows, ensure Microsoft Visual C++ Build Tools are installed for `simpleaudio`.
 
 ## Usage
 
 Run the main script:
-```
 python multi_lang_converter_morse_sound.py
-```
 
 - Enter English text in the left box.
 - Use the buttons to convert between English, Braille, and Morse.
@@ -53,8 +51,5 @@ python multi_lang_converter_morse_sound.py
 
 This project is open source and free to use.
 
----
 
-Feel free to customize the README with your contact info or additional instructions!
 
-Would you like me to generate the `.md` file content directly or help with GitHub repository setup next?
