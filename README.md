@@ -58,8 +58,8 @@ Ensure you have [Node.js](https://nodejs.org) (v18 or higher recommended) instal
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/Drat47/Multi_lang_Connector_Morse_sound.git
-cd Multi_lang_Connector_Morse_sound
+git clone https://github.com/Drat47/Morse-Braille-Hub.git
+cd Morse-Braille-Hub
 
 # Install dependencies (Vite)
 npm install
