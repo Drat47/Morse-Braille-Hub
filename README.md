@@ -1,78 +1,112 @@
-# Multi-language Connector with Braille, Morse, TTS & Audio Beeps
+# 🌐 Morse & Braille Hub
 
-This project is a multi-language accessibility converter that bridges English, Braille, and Morse code. It features visual dot grid representations for Braille learning, Text-to-Speech (TTS) capabilities, and audio beep synthesis for Morse code.
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://multi-lang-connector-morse-sound.vercel.app/)
+[![Render Deployment](https://img.shields.io/badge/Render-Deployed-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://morse-braille-hub.onrender.com)
+[![Built with HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+[![Built with CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Vite Project](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-This repository supports both **a desktop version** (Python Tkinter) and a **web-based client version** (HTML/CSS/JS) designed for quick, serverless deployments on hosting platforms like Vercel and Render.
+An interactive, high-fidelity accessibility suite designed for translation, audio synthesis, and visual learning of **Braille and Morse code**. Running completely on the client-side with Zero-Backend dependency, it leverages modern Web APIs to provide instant conversions, responsive visualizations, and hardware-accelerated sound wave synthesis.
 
 ---
 
-## 🌐 Web Application (Vercel & Render Ready)
+## 🔗 Live Deployments
 
-The web version is a modern, responsive Single Page Application (SPA) utilizing native browser APIs (`Web Audio API` for Morse beeps, `Web Speech API` for TTS) and vector SVG renders for the Braille cells.
+Explore the application live on your browser or mobile device:
+- **Primary Deployment (Vercel):** [multi-lang-connector-morse-sound.vercel.app](https://multi-lang-connector-morse-sound.vercel.app/)
+- **Alternative Mirror (Render):** [morse-braille-hub.onrender.com](https://morse-braille-hub.onrender.com)
 
-### Features
-- **Responsive Layout:** Sleek dark/light theme options with a responsive glassmorphic aesthetic.
-- **Real-time Translation:** Type in English, Braille, or Morse to see instant, bidirectional translation.
-- **Web Audio API Morse Engine:** Synthesizes dots/dashes using customized sound wave oscillators with live pitch, volume, and Speed (WPM) settings.
-- **Braille Cell Visualizer:** Renders dot configurations (1 to 6) in interactive grid cards along with character labels.
+---
 
-### Running Locally
-To launch the web application locally, ensure you have [Node.js](https://nodejs.org) installed, then execute:
+## 🚀 Key Features
 
+### 1. Multi-Directional Translation Engine
+- **English ↔ Braille:** Converts standard alphabets, numbers, and punctuation marks to Unicode Braille cells and back.
+- **English ↔ Morse:** Real-time translation to international Morse code standard separators (letters separated by spaces, words separated by `/`).
+- **Real-Time Hook:** Translate text instantaneously as you type, or toggle manual mode with dedicated triggers.
+
+### 2. Audio Synthesis Engines
+- **Web Audio API Morse Synthesizer:** Direct oscillator sound wave generation. Adjust volume, tone frequency (Hz), and speed (WPM) dynamically using sliders. Offers precise scheduled playback with instant stop features.
+- **Web Speech API Speech Engine (TTS):** Integrated browser Text-to-Speech tool that supports localized voices, customizable speed rates, and pitch shifts.
+
+### 3. Braille Cell Dot Grid Visualizer
+- Dynamic **vector SVG rendering cards** representing the 6-dot Braille standard.
+- Highlights active pin positions with soft neon cyan shadows.
+- Displays corresponding English character tags underneath each cell card to enhance learning.
+
+---
+
+## 🛠️ Technical Stack & Architecture
+
+- **Build System:** [Vite](https://vitejs.dev/) (fast modular bundler and hot-module development server).
+- **Core Technologies:** HTML5 (semantic layout), Vanilla CSS3 (custom responsive variables, glassmorphism filters, radial neon gradient backdrop), and Vanilla JavaScript (ES6+ modules).
+- **Audio Interfaces:** Web Audio API (`AudioContext`, `OscillatorNode`, `GainNode` scheduling) and Web Speech API (`SpeechSynthesisUtterance`).
+- **Performance Model:** 100% client-side execution. Pages load instantly, scale efficiently, and host serverless on edge content delivery networks (CDNs).
+
+---
+
+## 💻 Local Development
+
+Run the web version locally to customize or test changes:
+
+### Prerequisites
+Ensure you have [Node.js](https://nodejs.org) (v18 or higher recommended) installed.
+
+### Installation
 ```bash
-# Install dependencies (Vite developer environment)
+# Clone the repository
+git clone https://github.com/Drat47/Multi_lang_Connector_Morse_sound.git
+cd Multi_lang_Connector_Morse_sound
+
+# Install dependencies (Vite)
 npm install
-
-# Run the local development server
-npm run dev
 ```
-Open the printed local URL (typically `http://localhost:5173`) in your web browser.
 
-### Deploying to Vercel
-Vercel automatically detects the Vite config and deploys static sites instantly.
+### Script Tasks
+- **Start Development Server:**
+  ```bash
+  npm run dev
+  ```
+  *Launches the site at `http://localhost:5173` with hot-module reloading.*
 
-1. **Deploy via Vercel CLI:**
-   ```bash
-   npm install -g vercel
-   vercel
-   ```
-2. **Deploy via GitHub (Recommended):**
-   - Push your code to a Git repository.
-   - Go to [Vercel Dashboard](https://vercel.com) and click **Add New** > **Project**.
-   - Import this repository.
-   - Keep default build settings (`npm run build` and output directory `dist`).
-   - Click **Deploy**.
+- **Compile Production Bundle:**
+  ```bash
+  npm run build
+  ```
+  *Generates optimized assets ready for static hosting in the `/dist` directory.*
 
-### Deploying to Render
-1. Go to [Render Dashboard](https://dashboard.render.com).
-2. Click **New +** > **Static Site**.
-3. Connect your Git repository.
-4. Set the following options:
-   - **Name:** `morse-braille-hub` (or any custom name)
-   - **Build Command:** `npm run build`
-   - **Publish Directory:** `dist`
-5. Click **Create Static Site**.
+- **Preview Production Build:**
+  ```bash
+  npm run preview
+  ```
+  *Spins up a local server to test the compiled code at `http://localhost:4173`.*
 
 ---
 
-## 🐍 Desktop Application (Python Tkinter)
+## 🐍 Desktop Version (Legacy Python Script)
 
-The original Python desktop application runs locally and utilizes native system audio resources.
+The repository retains the original desktop implementation for standalone local use.
 
-### Installation & Run
-
-1. Install required Python packages:
+### Installation
+1. Install Python packages:
    ```bash
    pip install pyttsx3 simpleaudio numpy
    ```
-   *Note: On Windows, make sure you have the Microsoft Visual C++ Build Tools installed to compile `simpleaudio`.*
+   *Note: Windows systems require Microsoft Visual C++ Build Tools installed to compile `simpleaudio`.*
 
-2. Run the main script:
+2. Start the desktop GUI:
    ```bash
    python multi_lang_converter_morse_sound.py
    ```
 
-### Features
-- Tkinter GUI with dual English and Braille/Morse text editors.
-- Local speech output utilizing `pyttsx3`.
-- Background threading for audio playback to prevent UI locks.
+### Python Stack Features
+- Standalone Tkinter window interface.
+- Local audio playback using native Windows DLL `winsound` or cross-platform `simpleaudio`.
+- Background threading for speech to prevent main thread blocking.
+
+---
+
+## 🛡️ License
+
+This project is open-source and available under the **MIT License**.
