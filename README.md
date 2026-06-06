@@ -7,7 +7,9 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Vite Project](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-An interactive, high-fidelity accessibility suite designed for translation, audio synthesis, and visual learning of **Braille and Morse code**. Running completely on the client-side with Zero-Backend dependency, it leverages modern Web APIs to provide instant conversions, responsive visualizations, and hardware-accelerated sound wave synthesis.
+An interactive, high-fidelity accessibility suite designed for translation, audio synthesis, and visual learning of **Braille and Morse code**. Developed by **Dharmesh Singhal**.
+
+Running completely on the client-side with Zero-Backend dependency, it leverages modern Web APIs to provide instant conversions, responsive visualizations, and hardware-accelerated sound wave synthesis.
 
 ---
 
@@ -80,7 +82,7 @@ npm install
   ```bash
   npm run preview
   ```
-  *Spins up a local server to test the compiled code at `http://localhost:4173`.*
+  *Provisions a local server to test the compiled code at `http://localhost:4173`.*
 
 ---
 
@@ -104,6 +106,13 @@ The repository retains the original desktop implementation for standalone local 
 - Standalone Tkinter window interface.
 - Local audio playback using native Windows DLL `winsound` or cross-platform `simpleaudio`.
 - Background threading for speech to prevent main thread blocking.
+
+---
+
+## 👤 Developer
+
+Developed with ❤️ by **Dharmesh Singhal**
+- **GitHub:** [@Drat47](https://github.com/Drat47)
 
 ---
 

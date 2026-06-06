@@ -1,3 +1,9 @@
+/**
+ * Morse & Braille Hub - Core Translation & Audio Engines
+ * Developed by: Dharmesh Singhal
+ * GitHub: https://github.com/Drat47
+ */
+
 // ---------------------------
 // Braille Mapping
 // ---------------------------
