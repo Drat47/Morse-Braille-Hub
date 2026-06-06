@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Language Morse & Braille Hub</title>
+  <meta name="description" content="Convert text between English, Braille, and Morse code with interactive visualizations and real-time audio playback. Ready for Vercel and Render.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="dark-mode">
+  <div class="bg-gradient-glow"></div>
+  
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-content">
+        <div class="logo-area">
+          <div class="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+              <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+              <line x1="12" x2="12" y1="19" y2="22"/>
+            </svg>
+          </div>
+          <h1>Morse & Braille <span class="text-gradient">Hub</span></h1>
+        </div>
+        <p class="subtitle">An interactive accessibility suite for translation, audio synthesis, and visual learning</p>
+      </div>
+      
+      <button id="theme-toggle" class="btn-icon" aria-label="Toggle dark/light mode">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <div class="main-grid">
+        <!-- Left Panel: Input -->
+        <section class="panel glass">
+          <div class="panel-header">
+            <h2>English / Input Text</h2>
+            <div class="actions">
+              <button id="clear-input" class="btn-text-icon" title="Clear text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"/>
+                </svg>
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="textarea-container">
+            <textarea id="text-input" placeholder="Type or paste English text here... (or enter Braille/Morse and convert back)" maxlength="1000"></textarea>
+            <div class="char-counter"><span id="input-char-count">0</span> / 1000</div>
+          </div>
+          <div class="panel-actions">
+            <button id="speak-input-btn" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
+              </svg>
+              Speak English
+            </button>
+            
+            <button class="settings-toggle" data-target="tts-settings">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+              TTS Voice Settings
+            </button>
+          </div>
+          
+          <div id="tts-settings" class="settings-panel collpased">
+            <div class="setting-group">
+              <label for="voice-select">Voice</label>
+              <select id="voice-select" class="form-control"></select>
+            </div>
+            <div class="settings-grid-2">
+              <div class="setting-group">
+                <label for="tts-rate">Speed (<span id="tts-rate-val">1.0</span>x)</label>
+                <input type="range" id="tts-rate" min="0.5" max="2" step="0.1" value="1.0">
+              </div>
+              <div class="setting-group">
+                <label for="tts-pitch">Pitch (<span id="tts-pitch-val">1.0</span>)</label>
+                <input type="range" id="tts-pitch" min="0.5" max="2" step="0.1" value="1.0">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Center Controls: Translation operations -->
+        <section class="controls-panel">
+          <div class="control-actions-wrapper">
+            <div class="direction-badge">Translation Modes</div>
+            <button id="btn-eng-to-braille" class="btn btn-primary btn-action">
+              <span>English → Braille</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" x2="19" y1="12" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </button>
+            <button id="btn-braille-to-eng" class="btn btn-primary btn-action">
+              <span>Braille → English</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" x2="19" y1="12" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </button>
+            <button id="btn-eng-to-morse" class="btn btn-primary btn-action">
+              <span>English → Morse</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" x2="19" y1="12" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </button>
+            <button id="btn-morse-to-eng" class="btn btn-primary btn-action">
+              <span>Morse → English</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" x2="19" y1="12" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </button>
+            
+            <div class="options-group">
+              <label class="checkbox-container">
+                <input type="checkbox" id="auto-translate" checked>
+                <span class="checkmark"></span>
+                Real-time translation
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Panel: Output -->
+        <section class="panel glass">
+          <div class="panel-header">
+            <h2>Braille / Morse Output</h2>
+            <div class="actions">
+              <button id="copy-output" class="btn-text-icon" title="Copy output">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                </svg>
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="textarea-container">
+            <textarea id="text-output" placeholder="Translation output will appear here... (Or type Morse/Braille here)"></textarea>
+            <div id="copy-toast" class="toast hidden">Copied to clipboard!</div>
+          </div>
+          <div class="panel-actions">
+            <div class="play-group">
+              <button id="speak-output-btn" class="btn btn-secondary btn-play" title="Play TTS or Morse sound">
+                <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                <span>Play Sound</span>
+              </button>
+              <button id="stop-audio-btn" class="btn btn-danger btn-stop" disabled title="Stop audio playback">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                </svg>
+                Stop
+              </button>
+            </div>
+            
+            <button class="settings-toggle" data-target="morse-settings">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              </svg>
+              Audio Settings
+            </button>
+          </div>
+          
+          <div id="morse-settings" class="settings-panel collpased">
+            <div class="settings-grid-3">
+              <div class="setting-group">
+                <label for="morse-freq">Pitch (<span id="morse-freq-val">700</span> Hz)</label>
+                <input type="range" id="morse-freq" min="300" max="1200" step="50" value="700">
+              </div>
+              <div class="setting-group">
+                <label for="morse-wpm">Speed (<span id="morse-wpm-val">15</span> WPM)</label>
+                <input type="range" id="morse-wpm" min="5" max="40" step="1" value="15">
+              </div>
+              <div class="setting-group">
+                <label for="morse-volume">Volume (<span id="morse-volume-val">80</span>%)</label>
+                <input type="range" id="morse-volume" min="0" max="100" step="5" value="80">
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Bottom: Braille Visualization Panel -->
+      <section class="visualizer-section glass">
+        <div class="visualizer-header">
+          <div class="title-with-badge">
+            <h2>Braille Dot Visualization</h2>
+            <span class="badge">Dynamic Interactive Grid</span>
+          </div>
+          <p class="section-desc">Interactive cell simulation mapping characters to 6-dot configurations</p>
+        </div>
+        
+        <div class="visualizer-content">
+          <div id="braille-visualizer-container" class="braille-grid-container">
+            <div class="empty-state">Translate to Braille to view dot cell structures...</div>
+          </div>
+        </div>
+
+        <div class="braille-legend">
+          <div class="legend-title">6-Dot Cell Order Reference:</div>
+          <div class="legend-grid">
+            <div class="legend-cell">
+              <div class="legend-dot active">1</div>
+              <div class="legend-dot active">4</div>
+              <div class="legend-dot active">2</div>
+              <div class="legend-dot active">5</div>
+              <div class="legend-dot active">3</div>
+              <div class="legend-dot active">6</div>
+            </div>
+            <div class="legend-text">
+              Dots are numbered 1-3 on the left column, and 4-6 on the right column. Glow indicators reflect active pin points.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Morse & Braille accessibility translator project. Client-side audio generation using Web Audio API.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

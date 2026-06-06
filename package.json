@@ -1,0 +1,15 @@
+{
+  "name": "multi-lang-converter-morse-sound",
+  "version": "1.0.0",
+  "description": "Multi-language Converter to Braille, Morse Code with audio synthesize and dot visualization",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
