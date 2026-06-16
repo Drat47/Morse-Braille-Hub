@@ -1,12 +1,5 @@
 # 🌐 Morse & Braille Hub
 
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://multi-lang-connector-morse-sound.vercel.app/)
-[![Render Deployment](https://img.shields.io/badge/Render-Deployed-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://morse-braille-hub.onrender.com)
-[![Built with HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
-[![Built with CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Vite Project](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-
 An interactive, high-fidelity accessibility suite designed for translation, audio synthesis, and visual learning of **Braille and Morse code**. Developed by **Dharmesh Singhal**.
 
 Running completely on the client-side with Zero-Backend dependency, it leverages modern Web APIs to provide instant conversions, responsive visualizations, and hardware-accelerated sound wave synthesis.
